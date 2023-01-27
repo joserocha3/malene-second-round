@@ -1,9 +1,13 @@
 <script setup lang="ts">
-import { watch, onMounted } from 'vue'
+import { watch, onMounted, ref } from 'vue'
+import AlbumModal from '@/components/AlbumModal.vue'
+
 /* eslint-disable */
 const props = defineProps({
   album: Object
 })
+
+const modalIsOpen = ref(false)
 
 // Watch function that saves the album favorite value to localStorage if the user has favorited the album.
 watch(props.album, (newValue) => {
@@ -31,12 +35,16 @@ const share = (data) => {
   }
 }
 
+function toggleModal() {
+  modalIsOpen.value = !modalIsOpen.value
+}
+
 </script>
 
 <template>
   <div class="relative p-12 rounded-lg bg-neutral-100 shadow">
     <div class="pt-4 pb-8">
-      <h1 class="font-bold mb-2 text-lg">{{ props.album['im:name'].label }}</h1>
+      <h1 class="font-bold mb-2 text-lg">{{ album['im:name'].label }}</h1>
       <h2 class=" mb-2">{{ props.album['im:artist'].label }}</h2>
       <p class="text-sm italic">{{ props.album['im:releaseDate'].attributes.label }}</p>
     </div>
@@ -63,5 +71,9 @@ const share = (data) => {
         Learn More
       </a>
     </div>
+    <button class="mt-2 text-sm px-4 py-2 rounded-lg bg-neutral-300 border bg-opacity-60 hover:bg-opacity-100" @click="toggleModal">
+      Album Info
+    </button>
   </div>
+  <AlbumModal :album="album" :modalIsOpen="modalIsOpen"/>
 </template>

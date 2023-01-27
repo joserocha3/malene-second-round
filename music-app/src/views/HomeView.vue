@@ -27,7 +27,7 @@ fetchAlbumData()
 // Filtering the album data from user search term and favorite filter.
 const filteredAlbumData = computed(() => {
   if (favoriteFilter.value) {
-    return albumData.value.filter(album => album.favorite === true).filter(album => album.title.label.toLowerCase().includes(searchTerm.value.toLowerCase()))
+    return albumData.value.filter(album => album.favorite === true && album.title.label.toLowerCase().includes(searchTerm.value.toLowerCase()))
   } else {
     return albumData.value.filter(album => album.title.label.toLowerCase().includes(searchTerm.value.toLowerCase()))
   }
