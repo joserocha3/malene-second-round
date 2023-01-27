@@ -41,3 +41,11 @@ Please organize, design, test and document your code as if it were going into pr
 All the best and happy coding,
 
 The White Rabbit Japan Team
+
+## Second Round
+
+- Background Overlay (Click Out to Close)
+- Slots (to insert content)
+- Responsiveness
+- Scrolling Enabled/Disabled: Can you scroll the page when the Modal is visible? Can you scroll within the modal if the content exceeds the view?
+- Use of Portal (Render Children outside the DOM Hierarchy)
